@@ -1,0 +1,56 @@
+{
+  "short_name": "AI Calorie Counter",
+  "name": "Contador de Calorías con IA",
+  "description": "Aplicación para analizar calorías en alimentos usando inteligencia artificial",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#007bff",
+  "background_color": "#ffffff",
+  "categories": ["food", "health", "nutrition"],
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Pantalla principal de AI Calorie Counter"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Analizar Imagen",
+      "short_name": "Analizar",
+      "description": "Analizar una nueva imagen de comida",
+      "url": "/analyze",
+      "icons": [{ "src": "analyze-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Historial",
+      "short_name": "Historial",
+      "description": "Ver historial de análisis",
+      "url": "/history",
+      "icons": [{ "src": "history-icon.png", "sizes": "96x96" }]
+    }
+  ]
+}

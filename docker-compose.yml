@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  ai-calorie-counter:
+    build: .
+    ports:
+      - "80:80"
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - GOOGLE_CLOUD_PROJECT_ID=${GOOGLE_CLOUD_PROJECT_ID}
+      - GOOGLE_CLOUD_KEY_FILE=/app/credentials/service-account.json
+    volumes:
+      - ./credentials:/app/credentials:ro
+      - ./logs:/var/log/nginx
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Opcional: Base de datos para almacenamiento persistente
+  # postgres:
+  #   image: postgres:15-alpine
+  #   environment:
+  #     POSTGRES_DB: ai_calorie_counter
+  #     POSTGRES_USER: ${DB_USER:-postgres}
+  #     POSTGRES_PASSWORD: ${DB_PASSWORD}
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+
+  # Opcional: Redis para cache
+  # redis:
+  #   image: redis:7-alpine
+  #   restart: unless-stopped
+  #   volumes:
+  #     - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
